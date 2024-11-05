@@ -26,18 +26,10 @@ export class CollectionArtworkTableComponent {
     }
 
     searchCollectionText = "";
-    searchCollectionDisplayLimit = 4;
+    searchCollectionDisplayLimit = 16;
 
     // configuration settings
     configSettings = new ConfigSettings;
-
-    getSelelectedCollectionArtwork(): CollectionArtwork{
-        return this.model.selectedCollectionArtwork;
-    }
-
-    getSelelectedCollectionArtworkId(): string{
-        return this.model.selectedCollectionArtworkId;
-    }
 
     unsetSelectedCollectionArtwork() {
         this.model.selectedCollectionArtwork = null;
@@ -85,6 +77,7 @@ export class CollectionArtworkTableComponent {
         newCollectionArtwork.name = "";
         newCollectionArtwork.year = "";
         newCollectionArtwork.searchstring = "";
+        console.log("save",newCollectionArtwork);
         this.model.saveCollectionArtwork(newCollectionArtwork);
     }
 
