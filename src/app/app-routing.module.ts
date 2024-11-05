@@ -23,6 +23,8 @@ import { SelectorTableComponent } from './selectorTable.component';
 import { ModelResolver7 } from './model.resolver7';
 import { SelectorComponent } from './selector.component';
 import { ThankyouComponent } from './thankyou.component';
+import { CollectionArtworkTableComponent } from './collectionArtworkTable.component';
+import { ModelResolver8 } from './model.resolver8';
 
 const routes: Routes = [
   { path: 'gallery', component: HomepageComponent, resolve: { model1: ModelResolver1, model2: ModelResolver2, model3: ModelResolver3 } },
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: 'themes', component: ThemeTableComponent, resolve: { model3: ModelResolver3 } },
   { path: 'artworks', component: ArtworkTableComponent, resolve: { model2: ModelResolver2 } },
   { path: 'users', component: UserTableComponent, resolve: { model5: ModelResolver5 } },
+  { path: 'collection', component: CollectionArtworkTableComponent, resolve: { model8: ModelResolver8 } },
   { path: 'exhibitions', component: ExhibitionTableComponent, resolve: { model6: ModelResolver6 } },
   { path: 'login', component: UserLoginComponent, resolve: { model2: ModelResolver2, model5: ModelResolver5 } },
   { path: 'selector', component: SelectorTableComponent, resolve: { model1: ModelResolver1, model5: ModelResolver5, model7: ModelResolver7 } },

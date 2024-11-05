@@ -36,6 +36,9 @@
                   <a class="nav-link" routerLink="/authoring" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Advanced</a>
                 </li> -->
                 <li *ngIf="isAdmin()" class="nav-item">
+                  <a class="nav-link" routerLink="/collection" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Collection</a>
+                </li>
+                <li *ngIf="isAdmin()" class="nav-item">
                   <a class="nav-link" routerLink="/users" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Users</a>
                 </li>
                 <li *ngIf="isAdmin()" class="nav-item">

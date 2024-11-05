@@ -1,0 +1,76 @@
+<paNavBar></paNavBar>
+<div style="width: 100%; background-color: white;" class="border pl-3 pr-3 mb-3">
+    <p class="lead">Manage the artwork collection available in Edinburgh 900 Viewpoints. </p>
+    <div *ngIf="isAdmin()" class="form-group">
+        <div *ngIf="!getSelelectedCollectionArtworkId()" class="col-xs-12">
+            <button class="float-right btn btn-success" (click)="addCollectionArtwork(); deleteConfirmation_Id=null">New collection artwork</button><br/><br/>
+        </div>
+        <div *ngIf="!getSelelectedCollectionArtworkId()" class="row pt-2">
+            <div class=" col-12">
+                <input type="text" class="form-control" id="collection-search-text" aria-describedby="collection-search-text" 
+                [(ngModel)]="searchCollectionText" placeholder="Search collection">
+            </div>
+        </div>
+    </div>
+<!-- </div>
+<div *ngIf="isAdmin()" class="card border p-3 mb-3" style="border-radius: 15px;"> -->
+    <div class="row ml-1 mb-1" *ngIf="!getSelelectedCollectionArtworkId()">
+        <span class="fs-6" *ngIf="filteredResults().length <= searchCollectionDisplayLimit">{{filteredResults().length}} items shown</span>
+        <span class="fs-6" *ngIf="filteredResults().length > searchCollectionDisplayLimit" class="fs-6">{{(filteredResults() | slice:0:searchCollectionDisplayLimit).length}} of {{filteredResults().length}} items shown</span>
+    </div>
+    <ng-container *ngFor="let collectionArtwork of filteredResults() | slice:0:searchCollectionDisplayLimit; let i = index; let last = last">
+        <!-- view artwork -->
+        <div *ngIf="!getSelelectedCollectionArtworkId()">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="container">
+                        <img src="{{collectionArtwork.filelocation}}" alt="{{collectionArtwork.name}}" class="img-fluid" height="auto" width="100%" (error)="handleMissingImage($event)">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="container">
+                        <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.name"></div>
+                        <strong><div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.artist"></div></strong>
+                        <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.year"></div>
+                        <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.description"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="deleteConfirmation_Id==collectionArtwork._id">
+                <div class="alert alert-danger" role="alert"><strong>Are you sure you want to delete this collection artwork?</strong> <span><button class="btn btn-danger ml-2" (click)="deleteCollectionArtwork(collectionArtwork._id); deleteConfirmation_Id=null">OK</button> <button class="btn btn-secondary ml-2" (click)="deleteConfirmation_Id=null">Cancel</button></span></div>
+            </div>
+            <div class="row mt-1">
+                <div class="container">
+                    <button (click)="setSelectedCollectionArtwork(collectionArtwork)" class="float-right btn btn-warning">Edit</button>
+                    <button (click)="deleteConfirmation_Id=collectionArtwork._id" class="float-right mr-3 btn btn-danger">Delete</button>
+                </div>
+            </div>
+            <div *ngIf="!last" class="row">
+                <div class="container">
+                    <hr>
+                </div>
+            </div>
+            <div *ngIf="last" class="row">
+                <div class="container">
+                    <hr style="color: white;">
+                </div>
+            </div>
+        </div>
+        <!-- edit artwork -->
+        <div *ngIf="getSelelectedCollectionArtworkId()==collectionArtwork._id">
+            <div>
+                <strong>Name: </strong><textarea rows="1" class="form-control" [(ngModel)]="model.selectedCollectionArtwork.name"></textarea>
+                <strong>Artist: </strong><textarea rows="1" class="form-control" [(ngModel)]="model.selectedCollectionArtwork.artist"></textarea>
+                <strong>Year: </strong><textarea rows="1" class="form-control" [(ngModel)]="model.selectedCollectionArtwork.year"></textarea>
+                <strong>URL: </strong><textarea rows="1" class="form-control" [(ngModel)]="model.selectedCollectionArtwork.filelocation"></textarea>
+                <strong>Description: </strong><textarea rows="10" class="form-control" [(ngModel)]="model.selectedCollectionArtwork.description"></textarea>
+            </div>
+            <div class="mt-1 mb-5">
+                <button (click)="saveCollectionArtwork(model.selectedCollectionArtwork); unsetSelectedCollectionArtwork();" class="float-right btn btn-warning">Save</button>
+            </div>
+        </div>
+    </ng-container>
+    <div class="row pr-2 pl-2 pb-3" *ngIf="!getSelelectedCollectionArtworkId() && filteredResults().length > searchCollectionDisplayLimit">
+        <button class="btn btn-secondary" (click)="searchCollectionDisplayLimit = searchCollectionDisplayLimit+6">More results</button>
+    </div>
+</div>

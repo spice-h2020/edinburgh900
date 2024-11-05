@@ -194,7 +194,7 @@
                         />
                         <label class="form-check-label">Closed&nbsp;&nbsp;</label>
                     </div>
-                    <div class = "help-block">Select Open to allow users to respond to this script, or Closed to prevent any responses. Open scripts can be accessed directly online even if they are Private.</div>
+                    <div class = "help-block">Select Open to allow users to respond to this script, or Closed to prevent any responses. Open scripts can still be accessed directly via the URL if they are Private.</div>
                 </div>
             </div>
             <div class="row mt-1" *ngIf="isAdmin()">
@@ -221,7 +221,7 @@
                         <label class="form-check-label">Private&nbsp;&nbsp;</label>
                     </div>
                     <div *ngIf="!script.homepageartworkid && script.visible" class="text-info">Add a homepage artwork to the script to make it visible</div>
-                    <div class = "help-block">Public scripts are shown on the Responses page. Selecting Public and Open means users can respond to the script and it will also be visible on the Home page.</div>
+                    <div class = "help-block">Public scripts are shown on the website. Selecting Public and Open means users can respond to the script and it will also be visible on the Home page.</div>
                 </div>
             </div>
             <div class="row mt-1" *ngIf="isAdmin()">
@@ -273,6 +273,7 @@
                         />
                         <label class="form-check-label">Not featured&nbsp;&nbsp;</label>
                     </div>
+                    <div *ngIf="!script.visible && script.featured" class="text-info">Featured scripts will only be seen if their visibility is set to public</div>
                     <div class = "help-block">Featured scripts are shown in the top panel on the homepage.</div>
                 </div>
             </div>

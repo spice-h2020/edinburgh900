@@ -1,8 +1,8 @@
-# Deep Viewpoints
+# Edinburgh 900 Viewpoints
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
 
-## Configuring Deep Viewpoints to work with the SPICE Linked Data Hub
+## Configuring Edinburgh 900 Viewpoints to work with the SPICE Linked Data Hub
 
 Copy the file `src/app/config.example.ts` to `src/app/config.ts`
 

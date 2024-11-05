@@ -21,6 +21,7 @@ export class Model {
     private activityLocator = (activity: Activity, id: string) => activity._id == id;
     private artworkLocator = (artwork: Artwork, id: string) => artwork._id == id;
     private userLocator = (user: User, id: string) => user._id == id;
+    private collectionArtworkLocator = (collectionArtwork: CollectionArtwork, id: string) => collectionArtwork._id == id;
     private stringLocator = (x: any, id: any) => x._id == id;
     private openAndVisible = (x: any) => (x.open && x.visible);
     private visible = (x: any) => (x.visible);
@@ -33,6 +34,7 @@ export class Model {
     private dbActivities: Activity[] = new Array<Activity>();
     private dbUsers: User[] = new Array<User>();
     private dbExhibitions: Exhibition[] = new Array<Exhibition>();
+    private dbCollectionArtworks: CollectionArtwork[] = new Array<CollectionArtwork>();
 
     //selections from overview pape
     selectedArtwork = undefined;
@@ -52,9 +54,13 @@ export class Model {
     //scriptset selection
     selectedscriptset: ScriptSet = null;
 
+    //Collection artwork selection
+    selectedCollectionArtwork: CollectionArtwork = null;
+    selectedCollectionArtworkId: string = null;
+
     //add artworks not in LDH//
     private extraArtworks = new ExtraArtworks;
-    private dbCollectionArtworks: CollectionArtwork[] = this.extraArtworks.artworks;
+    // private dbCollectionArtworks: CollectionArtwork[] = [];
     // new Array<CollectionArtwork>();
 
 
@@ -67,7 +73,7 @@ export class Model {
         this.dbDataSource.getActivityData().subscribe(data => this.dbActivities = data);
         this.dbDataSource.getScriptData().subscribe(data => this.dbScripts = data);
         this.dbDataSource.getScriptSetData().subscribe(data => {this.dbScriptSets = data});
-        this.dbDataSource.getCollection().subscribe(val => {this.dbCollectionArtworks.push(val)});
+        this.dbDataSource.getCollectionArtworkData().subscribe(data => {this.dbCollectionArtworks = data});
 
     }
 
@@ -108,6 +114,44 @@ export class Model {
 
     getScriptsOfAnExhibition(_id: string): Script[] {
         return this.getScripts().filter(x => x.exhibitionids.some(y => y == _id));
+    }
+
+    // Collection artwork
+    getCollectionArtworks(): CollectionArtwork[] {
+        return this.dbCollectionArtworks; 
+    }
+
+    getCollectionArtwork(_id: string) {
+        return this.dbCollectionArtworks.find(x => this.collectionArtworkLocator(x, _id));
+    }
+
+    saveCollectionArtwork(collectionArtwork: CollectionArtwork) {
+        if (collectionArtwork._id == undefined) {
+            this.dbDataSource.saveCollectionArtwork(collectionArtwork).subscribe(p => 
+                {
+                    this.dbCollectionArtworks.push(p);
+                    this.selectedCollectionArtwork = p;
+                    this.selectedCollectionArtworkId = p._id;
+                }
+            );
+            
+        }
+        else {
+            this.dbDataSource.updateCollectionArtwork(collectionArtwork).subscribe(() => {
+                let index = this.dbCollectionArtworks.findIndex(item => this.collectionArtworkLocator(item, collectionArtwork._id));
+                this.dbCollectionArtworks.splice(index, 1, collectionArtwork);
+            });
+        } 
+    }
+
+    deleteCollectionArtwork(_id: string) {
+        console.log(_id);
+        this.dbDataSource.deleteCollectionArtwork(_id).subscribe(() => {
+            let index = this.dbCollectionArtworks.findIndex(p => this.collectionArtworkLocator(p, _id));
+            if (index > -1) {
+                this.dbCollectionArtworks.splice(index, 1);
+            }
+        })
     }
 
     // User

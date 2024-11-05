@@ -9,9 +9,10 @@ import { ModelResolver4 } from "./model.resolver4";
 import { ModelResolver5 } from "./model.resolver5";
 import { ModelResolver6 } from "./model.resolver6";
 import { ModelResolver7 } from "./model.resolver7";
+import { ModelResolver8 } from "./model.resolver8";
 
 @NgModule({ 
     imports: [HttpClientModule], 
-    providers: [Model, RestDataSource, ModelResolver1, ModelResolver2, ModelResolver3, ModelResolver4, ModelResolver5, ModelResolver6, ModelResolver7] })
+    providers: [Model, RestDataSource, ModelResolver1, ModelResolver2, ModelResolver3, ModelResolver4, ModelResolver5, ModelResolver6, ModelResolver7, ModelResolver8] })
 
 export class ModelModule { }

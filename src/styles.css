@@ -52,6 +52,8 @@ a {color: rgb(170, 170, 170);
 }
 .museum-colour:not(:disabled) {
   background-color: rgb(255, -0, 0);
+  48, 63, 70
+  180, 57, 27
 } */
 
 /*IMMA*/
@@ -60,6 +62,14 @@ a {color: rgb(170, 170, 170);
 }
 .museum-colour:not(:disabled) {
   background-color: rgb(26, 161, 185);
+}
+
+/*Edinburgh 900*/
+.museum-colour {
+  background-color: rgb(36, 71, 99);
+}
+.museum-colour:not(:disabled) {
+  background-color: rgb(36, 71, 99);
 }
 
 .container-iframe {
