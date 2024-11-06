@@ -40,9 +40,9 @@
                 <div class="row" *ngIf="deleteConfirmation_Id==collectionArtwork._id">
                     <div class="alert alert-danger" role="alert"><strong>Are you sure you want to delete this collection artwork?</strong> <span><button class="btn btn-danger ml-2" (click)="deleteCollectionArtwork(collectionArtwork._id); deleteConfirmation_Id=null">OK</button> <button class="btn btn-secondary ml-2" (click)="deleteConfirmation_Id=null">Cancel</button></span></div>
                 </div>
-                <div class="row mt-1">
+                <div class="row mt-1" *ngIf="deleteConfirmation_Id!=collectionArtwork._id">
                     <div class="container">
-                        <button (click)="setSelectedCollectionArtwork(collectionArtwork)" class="float-right btn btn-warning">Edit</button>
+                        <button (click)="setSelectedCollectionArtwork(collectionArtwork); deleteConfirmation_Id=null;" class="float-right btn btn-warning">Edit</button>
                         <button (click)="deleteConfirmation_Id=collectionArtwork._id" class="float-right mr-3 btn btn-danger">Delete</button>
                     </div>
                 </div>

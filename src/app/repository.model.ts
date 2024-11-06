@@ -129,7 +129,7 @@ export class Model {
         if (collectionArtwork._id == undefined) {
             this.dbDataSource.saveCollectionArtwork(collectionArtwork).subscribe(p => 
                 {
-                    this.dbCollectionArtworks.push(p);
+                    this.dbCollectionArtworks.unshift(p);
                     this.selectedCollectionArtwork = p;
                     this.selectedCollectionArtworkId = p._id;
                 }
