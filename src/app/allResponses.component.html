@@ -157,7 +157,7 @@
                                     {{activity.authorname}}
                                 </div>
                                 <div class="col-4 text-right" style="max-width: 5em;">
-                                    <span><span class="badge rounded-pill" style="background-color: rgba(0,0,0, 0.2);">{{activity.likes}}</span> <i class="fas fa-heart ms-2"></i></span>
+                                    <span><span class="badge rounded-pill" style="background-color: rgba(0,0,0, 0.2);">{{activity.likes}}</span> <i (click)="addLikeToActivity(activity)" style="cursor: pointer" class="fas fa-heart ms-2 cursor-pointer"></i></span>
                                 </div>
                                 </div>
                             </div>
