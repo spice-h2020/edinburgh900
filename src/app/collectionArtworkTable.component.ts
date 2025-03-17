@@ -77,7 +77,6 @@ export class CollectionArtworkTableComponent {
         newCollectionArtwork.name = "";
         newCollectionArtwork.year = "";
         newCollectionArtwork.searchstring = "";
-        console.log("save",newCollectionArtwork);
         this.model.saveCollectionArtwork(newCollectionArtwork);
     }
 

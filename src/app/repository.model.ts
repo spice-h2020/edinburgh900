@@ -145,7 +145,6 @@ export class Model {
     }
 
     deleteCollectionArtwork(_id: string) {
-        console.log(_id);
         this.dbDataSource.deleteCollectionArtwork(_id).subscribe(() => {
             let index = this.dbCollectionArtworks.findIndex(p => this.collectionArtworkLocator(p, _id));
             if (index > -1) {
