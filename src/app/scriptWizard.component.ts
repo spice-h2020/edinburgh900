@@ -92,6 +92,11 @@ export class ScriptWizardComponent {
     }
 
     //URL for accessing the script directly
+    landingURL(script: Script): string {
+        return this.configSettings.baseURL + "landing/" + script._id;
+        // return window.location.origin.concat("/slowLooking/", script._id);
+    }
+
     scriptURL(script: Script): string {
         return this.configSettings.baseURL + "slowLooking/" + script._id;
         // return window.location.origin.concat("/slowLooking/", script._id);

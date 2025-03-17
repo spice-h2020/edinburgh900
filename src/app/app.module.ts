@@ -43,6 +43,7 @@ import { FilterUserPipe } from './filteruser.pipe';
 import { SortableHeaderDirective } from './sortable-header.directive';
 import { FilterSelectedArtworksPipe } from './filterselectedartworks.pipe';
 import { CollectionArtworkTableComponent } from './collectionArtworkTable.component';
+import { LandingPageComponent } from './landingPage.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { CollectionArtworkTableComponent } from './collectionArtworkTable.compon
     FilterUserPipe,
     SortableHeaderDirective,
     FilterSelectedArtworksPipe,
-    CollectionArtworkTableComponent
+    CollectionArtworkTableComponent,
+    LandingPageComponent
     ],
   imports: [
     BrowserModule,

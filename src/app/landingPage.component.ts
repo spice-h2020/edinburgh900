@@ -11,11 +11,11 @@ import { Script } from "./script.model";
 
 
 @Component({
-    selector: "paAllResponses",
-    templateUrl: "allResponses.component.html"
+    selector: "paLandinPage",
+    templateUrl: "landingPage.component.html"
 })
 
-export class AllResponsesComponent implements OnInit {
+export class LandingPageComponent implements OnInit {
 
     public handleMissingImage(event: Event) {
         (event.target as HTMLImageElement).src = 'assets/img/488199.png';
@@ -155,5 +155,35 @@ export class AllResponsesComponent implements OnInit {
     sortAnswers(answers: questionanswer[]) {
         return answers.sort((a1, a2) => {if(a1.question > a2.question) {return 1;} else {return -1;}})
     }
+
+    statementOnlyScript(script: Script) {
+        for(var stage of script.stages) {
+            if(stage.stagetype != "statement") {
+                return false;
+            }
+        }
+        return true;
+    }
     
+    getExhibitionsFromIds(_ids: string[]) {
+        let exhibitions = [];
+        for(var _id of _ids) {
+            let exhibition = this.model.getExhibition(_id);
+            if(exhibition) {
+                exhibitions.push(exhibition);
+            }
+        }
+        return exhibitions;
+    }
+
+    getThemesFromIds(_ids: string[]) {
+        let themes = [];
+        for(var _id of _ids) {
+            let theme = this.model.getTheme(_id);
+            if(theme) {
+                themes.push(theme);
+            }
+        }
+        return themes;
+    }
 }

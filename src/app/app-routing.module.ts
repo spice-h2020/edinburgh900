@@ -25,6 +25,7 @@ import { SelectorComponent } from './selector.component';
 import { ThankyouComponent } from './thankyou.component';
 import { CollectionArtworkTableComponent } from './collectionArtworkTable.component';
 import { ModelResolver8 } from './model.resolver8';
+import { LandingPageComponent } from './landingPage.component';
 
 const routes: Routes = [
   { path: 'gallery', component: HomepageComponent, resolve: { model1: ModelResolver1, model2: ModelResolver2, model3: ModelResolver3 } },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'selector', component: SelectorTableComponent, resolve: { model1: ModelResolver1, model5: ModelResolver5, model7: ModelResolver7 } },
   { path: 'select/:id', component: SelectorComponent, resolve: { model1: ModelResolver1, model7: ModelResolver7 } },
   { path: 'allResponses/:id', component: AllResponsesComponent, resolve: { model1: ModelResolver1, model2: ModelResolver2, model4: ModelResolver4 } },
+  { path: 'landing/:id', component: LandingPageComponent, resolve: { model1: ModelResolver1, model2: ModelResolver2, model4: ModelResolver4 } },
   { path: 'home', component: OverviewComponent, resolve: {model1: ModelResolver1, model2: ModelResolver2, model3: ModelResolver3, model6: ModelResolver6}},
   { path: 'end', component: ThankyouComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },

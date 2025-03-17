@@ -36,6 +36,8 @@ export class UserLoginComponent {
 
     loginFailed = false;
 
+    responseDisplayLimit = 5;
+
     getUsers(): User[] {
         return this.model.getUsers();
     }
@@ -82,7 +84,7 @@ export class UserLoginComponent {
             return [];
         }
         else {
-            return this.model.getActivities().filter(x => x.author == this.currentuser.getUser()._id);
+            return this.model.getActivities().filter(x => x.author == this.currentuser.getUser()._id).sort((a, b) => (a.id > b.id) ? -1 : 1);
         }
     }
 

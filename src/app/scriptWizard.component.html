@@ -82,18 +82,18 @@
         </div>
         <div class="col-md-1" style="min-width: 16em;" *ngIf="!isAdmin()">
             <button class="btn btn-secondary float-right" (click)="selectScript(script._id); showup(); copyScriptMessage=false;">Open script</button>
-            <button class="btn btn-success float-right mt-3" style="clear: both;" (click)="copyScript(script);">Copy script</button>
-            <button class="btn btn-danger float-right mr-3 mt-3" (click)="confirmRemove(script._id); copyScriptMessage=false;">Remove script</button>
+            <!-- <button class="btn btn-success float-right mt-3" style="clear: both;" (click)="copyScript(script);">Copy script</button> -->
+            <button class="btn btn-danger float-right mr-3" (click)="confirmRemove(script._id); copyScriptMessage=false;">Remove script</button>
         </div>
     </div>
     <span *ngIf="copiedScript==script.id && copyScriptMessage">
         <div class="alert alert-success fadeout mt-3">{{copyScriptMessageText}}</div>
     </span>
     <div class="row" *ngIf="removeConfirmation_Id==script._id">
-        <div class="alert alert-danger" role="alert"><strong>Are you sure you want to remove this script?</strong> <span><button class="btn btn-danger ml-2" (click)="removeScript(script)">OK</button> <button class="btn btn-secondary ml-2" (click)="removeConfirmation_Id=''">Cancel</button></span></div>
+        <div class="alert alert-danger" role="alert"><strong>Are you sure you want to remove this script?</strong> <div><button class="btn btn-danger ml-2" (click)="removeScript(script)">OK</button> <button class="btn btn-secondary ml-2" (click)="removeConfirmation_Id=''">Cancel</button></div></div>
     </div>
     <div class="row" *ngIf="deleteConfirmation_Id==script._id">
-        <div class="alert alert-danger" role="alert"><strong>Are you sure you want to delete this script?</strong> <span><button class="btn btn-danger ml-2" (click)="deleteScript(script._id)">OK</button> <button class="btn btn-secondary ml-2" (click)="deleteConfirmation_Id=''">Cancel</button></span></div>
+        <div class="alert alert-danger" role="alert"><strong>Are you sure you want to delete this script?</strong> <div><button class="btn btn-danger ml-2" (click)="deleteScript(script._id)">OK</button> <button class="btn btn-secondary ml-2" (click)="deleteConfirmation_Id=''">Cancel</button></div></div>
     </div>
     <div class="row">
         <div class="col-12">
@@ -147,6 +147,17 @@
                             <span>{{artwork.year}}</span>
                         </ng-container>
                     </span>
+                </div>
+            </div>
+            <div class="row mt-1" *ngIf="script.open && script.stages.length > 0;">
+                <div class="col-sm-2" style="min-width: 8em;">
+                    <strong>Landing page: </strong>
+                </div>
+                <div class="col-sm">
+                    <a routerLink='/landing/{{script._id}}' [queryParams]="{return:'scripts'}">
+                        <button class="btn btn-light mr-3">View landing page <i class='fa fa-link'></i></button>
+                    </a>
+                    <button class="btn btn-light" ngbPopover="{{landingURL(script)}}" popoverTitle="Script URL copied to clipboard" ngxClipboard [cbContent]='landingURL(script)'>Copy landing page URL <i class="fa fa-clone" aria-hidden="true"></i></button>
                 </div>
             </div>
             <div class="row mt-1" *ngIf="script.open && script.stages.length > 0;">
@@ -979,7 +990,7 @@
             <a ngbNavLink (click)="editScriptStage=0; saveScript(model.selectedScript)"><strong>Title</strong></a>
             <ng-template ngbNavContent>
                 <p>
-                    Decide how your script will be presented in Deep Viewpoints. 
+                    Decide how your script will be introduced. 
                 </p>
 
                 <div class="row pb-3">

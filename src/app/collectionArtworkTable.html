@@ -8,15 +8,15 @@
         <div *ngIf="!model.selectedCollectionArtworkId" class="row pt-2">
             <div class=" col-12">
                 <input type="text" class="form-control" id="collection-search-text" aria-describedby="collection-search-text" 
-                [(ngModel)]="searchCollectionText" placeholder="Search collection">
+                [(ngModel)]="searchCollectionText" placeholder="Search tile, artist, year">
             </div>
         </div>
     </div>
 <!-- </div>
 <div *ngIf="isAdmin()" class="card border p-3 mb-3" style="border-radius: 15px;"> -->
-    <div class="row ml-1 mb-1" *ngIf="!model.selectedCollectionArtworkId">
-        <span class="fs-6" *ngIf="filteredResults().length <= searchCollectionDisplayLimit">{{filteredResults().length}} items shown</span>
-        <span class="fs-6" *ngIf="filteredResults().length > searchCollectionDisplayLimit" class="fs-6">{{(filteredResults() | slice:0:searchCollectionDisplayLimit).length}} of {{filteredResults().length}} items shown</span>
+    <div class="row pb-2" *ngIf="!model.selectedCollectionArtworkId">
+        <span class="fs-6 ml-1" *ngIf="filteredResults().length <= searchCollectionDisplayLimit">{{filteredResults().length}} items shown</span>
+        <span class="fs-6 ml-1" *ngIf="filteredResults().length > searchCollectionDisplayLimit" class="fs-6">{{(filteredResults() | slice:0:searchCollectionDisplayLimit).length}} of {{filteredResults().length}} items shown</span>
     </div>
     <ng-container *ngIf="!model.selectedCollectionArtworkId">
         <ng-container *ngFor="let collectionArtwork of filteredResults() | slice:0:searchCollectionDisplayLimit; let i = index; let last = last">
@@ -24,21 +24,21 @@
             <div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="container">
+                        <div>
                             <img src="{{collectionArtwork.filelocation}}" alt="{{collectionArtwork.name}}" class="img-fluid" height="auto" width="100%" (error)="handleMissingImage($event)">
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="container">
+                        <div class="col-12">
                             <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.name"></div>
                             <strong><div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.artist"></div></strong>
                             <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.year"></div>
-                            <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="collectionArtwork.description"></div>
+                            <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2; margin-top: 1em;" [innerHTML]="collectionArtwork.description"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row" *ngIf="deleteConfirmation_Id==collectionArtwork._id">
-                    <div class="alert alert-danger" role="alert"><strong>Are you sure you want to delete this collection artwork?</strong> <span><button class="btn btn-danger ml-2" (click)="deleteCollectionArtwork(collectionArtwork._id); deleteConfirmation_Id=null">OK</button> <button class="btn btn-secondary ml-2" (click)="deleteConfirmation_Id=null">Cancel</button></span></div>
+                    <div class="alert alert-danger" role="alert"><strong>Are you sure you want to delete this collection artwork?</strong> <div><button class="btn btn-danger ml-2" (click)="deleteCollectionArtwork(collectionArtwork._id); deleteConfirmation_Id=null">OK</button> <button class="btn btn-secondary ml-2" (click)="deleteConfirmation_Id=null">Cancel</button></div></div>
                 </div>
                 <div class="row mt-1" *ngIf="deleteConfirmation_Id!=collectionArtwork._id">
                     <div class="container">

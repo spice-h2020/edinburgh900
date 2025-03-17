@@ -4,23 +4,24 @@
     </div>
 </div> -->
 <paNavBar></paNavBar>
-<div style="width: 100%; background-color: white;" class="border pt-3">
+<div style="width: 100%; background-color: black;" class="border pt-3 text-white">
 <div *ngFor="let script of getScriptsOfScriptID(slowLookingScript); let i = index" class="col-sm-12 pb-4">
-    <h2 class="col-sm-12">{{script.name}}</h2>
-    <div class="col-sm-12">
-        <p style="white-space: pre-wrap;">{{script.description}}</p>
-        <figcaption *ngIf="script.author != ''" class="blockquote-footer text-dark">{{script.author}}</figcaption>
-    </div>
-    <div class="col-sm-12" *ngIf="getArtworkFromId(script.homepageartworkid).length > 0">
-        <div *ngFor="let artwork of getArtworkFromId(script.homepageartworkid);" class="row align-items-end mb-3">
+    <ng-container *ngIf="getArtworkFromId(script.homepageartworkid).length > 0">
+        <div *ngFor="let artwork of getArtworkFromId(script.homepageartworkid);" style="width: 100%;">
             <ng-container *ngIf="artwork != undefined">
-                <div class="col-sm-6" *ngIf="artwork.url">
+                    <div class="row m-0" style="width: 100%;">
+                        <div class="col-sm-6 mx-auto text-center">
+                            <img src="{{artwork.url}}" alt="{{artwork.name}}" (click)="startLightbox(artwork.url)" style="cursor: pointer; width: 100%;" (error)="handleMissingImage($event)">
+                        </div>
+                    </div>
+<!--     
+                <div class="col-sm-6" *ngIf="artwork.url"> -->
                     <!-- <div class="container"> -->
                         <!-- <img src="{{artwork.url}}" style="width: 100%; cursor: pointer;" class="img-fluid"> -->
-                        <img src="{{artwork.url}}" class="img-fluid float-end" alt="{{artwork.name}}" (click)="startLightbox(artwork.url)" style="cursor: pointer; width: 100%;" (error)="handleMissingImage($event)">
+                        <!-- <img src="{{artwork.url}}" class="img-fluid float-end" alt="{{artwork.name}}" (click)="startLightbox(artwork.url)" style="cursor: pointer; width: 100%;" (error)="handleMissingImage($event)"> -->
                     <!-- </div> -->
-                </div>
-                <div class="col-sm ml-3" *ngIf="artwork.url">
+                <!-- </div> -->
+                <!-- <div class="col-sm ml-3" *ngIf="artwork.url">
                     <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="artwork.name"></div>
                     <strong><div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="artwork.artist"> </div></strong>
                     <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="artwork.year"></div>
@@ -32,31 +33,36 @@
                     <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="artwork.name"></div>
                     <strong><div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="artwork.artist"> </div></strong>
                     <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="artwork.year"></div>
-                </div> 
+                </div>  -->
             </ng-container>
         </div>
+    </ng-container>
+
+    <h2 class="col-sm-12 pt-2">{{script.name}}</h2>
+    <div class="col-sm-12">
+        <p style="white-space: pre-wrap;">{{script.description}}</p>
+        <figcaption *ngIf="script.author != ''" class="blockquote-footer text-light">{{script.author}}</figcaption>
     </div>
-    
-    <div class="col-sm-12" *ngIf="getNonHomepageArtworksOfScript(script).length > 0">
-        <div class="row itemsBlock">
-            <div *ngFor="let otherartwork of getNonHomepageArtworksOfScript(script);" class="col-md-4 col-sm-6 col-12 pb-3">
-                <div class="row">
-                    <div class="container">
-                        <img *ngIf="otherartwork.url" src="{{otherartwork.url}}" class="img-fluid" alt="{{otherartwork.name}}" (click)="startLightbox(otherartwork.url)" style="height: auto; width: 100%; cursor: pointer;" (error)="handleMissingImage($event)">
-                    </div>
-                </div>
-                <div>
-                    <div class="container">
-                        <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="otherartwork.name"></div>
-                        <strong><div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="otherartwork.artist"></div></strong>
-                        <div class="row text-left" style="white-space: pre-wrap; line-height: 1.2;" [innerHTML]="otherartwork.year"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-sm-12" *ngIf="script.exhibitionids.length > 0"><strong>Exhibitions: </strong>
+        <ng-container *ngFor="let exhibition of getExhibitionsFromIds(script.exhibitionids); let last = last">
+          {{exhibition.name}}
+          <ng-container *ngIf="!last">, </ng-container>
+        </ng-container>
+        <br/>
+      </div>
+      <div class="col-sm-12" *ngIf="script.themeids.length > 0"><strong>Themes: </strong>
+        <ng-container *ngFor="let theme of getThemesFromIds(script.themeids); let last = last">
+          {{theme.name}}<ng-container *ngIf="!last">, </ng-container>
+        </ng-container>
+      </div>
+
+    <div class="col-sm text-center pt-5 pb-5" *ngIf="script.open">
+        <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'landing'}">
+          <button class="btn btn-dark overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+        </a>
     </div>
 
-    <div class="accordion mt-2" id="{{'script'+script._id}}">
+    <div class="accordion mt-2" id="{{'script'+script._id}}" *ngIf="!statementOnlyScript(script)">
         <div class="accordion-item museum-colour">
             <h2 class="accordion-header" id="{{'heading_' + 'script'+script._id}}">
                 <button 

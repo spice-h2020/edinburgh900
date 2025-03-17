@@ -19,7 +19,7 @@
 <br/> -->
 <table class="table table-sm" *ngIf="getActivitiesOfCurrentUser().length">
 <thead><tr><th style="border-top: 0px;">My responses</th><th style="border-top: 0px;"></thead>
-<tr *ngFor="let activity of getActivitiesOfCurrentUser();">
+<tr *ngFor="let activity of getActivitiesOfCurrentUser() | slice:0:responseDisplayLimit;">
     <td>
     <h4 class="text-sm-left">
         {{activity.script.name}}
@@ -115,6 +115,11 @@
         <span *ngIf="activity._id!=editContribution"><button (click)="confirmDelete(activity._id); editContribution=''" class="btn btn-danger">Delete</button></span>
         <span *ngIf="activity._id==editContribution"><button (click)="editContribution=''; saveActivity(activity)" class="btn btn-warning">Save</button></span>
     </td> -->
+</tr>
+<tr *ngIf="getActivitiesOfCurrentUser().length > responseDisplayLimit">
+    <td>
+        <button class="btn btn-secondary bg-dark text-white pt-2 pb-2" style="width: 100%" (click)="responseDisplayLimit = responseDisplayLimit+5">More responses</button>
+    </td>
 </tr>
 </table>
 </span>
