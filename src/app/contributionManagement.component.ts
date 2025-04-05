@@ -14,6 +14,12 @@ export class ContributionManagementComponent {
 
     constructor(public currentuser: CurrentUser, private model: Model){}
 
+    allResponseDisplayLimit = 5;
+
+    approvedResponseDisplayLimit = 5;
+
+    unapprovedResponseDisplayLimit = 5;
+
     currentUser: number = 1;
 
     deleteConfirmation_Id = "";

@@ -4,7 +4,7 @@
     </div>
 </div> -->
 <paNavBar></paNavBar>
-<div style="width: 100%; background-color: black;" class="border pt-3 text-white">
+<div style="width: 100%; background-color: white;" class="border pt-3 text-black">
 <div *ngFor="let script of getScriptsOfScriptID(slowLookingScript); let i = index" class="col-sm-12 pb-4">
     <ng-container *ngIf="getArtworkFromId(script.homepageartworkid).length > 0">
         <div *ngFor="let artwork of getArtworkFromId(script.homepageartworkid);" style="width: 100%;">
@@ -38,10 +38,10 @@
         </div>
     </ng-container>
 
-    <h2 class="col-sm-12 pt-2">{{script.name}}</h2>
+    <h2 class="col-sm-12 pt-5">{{script.name}}</h2>
     <div class="col-sm-12">
         <p style="white-space: pre-wrap;">{{script.description}}</p>
-        <figcaption *ngIf="script.author != ''" class="blockquote-footer text-light">{{script.author}}</figcaption>
+        <figcaption *ngIf="script.author != ''" class="blockquote-footer text-dark">{{script.author}}</figcaption>
     </div>
     <div class="col-sm-12" *ngIf="script.exhibitionids.length > 0"><strong>Exhibitions: </strong>
         <ng-container *ngFor="let exhibition of getExhibitionsFromIds(script.exhibitionids); let last = last">
@@ -54,15 +54,23 @@
         <ng-container *ngFor="let theme of getThemesFromIds(script.themeids); let last = last">
           {{theme.name}}<ng-container *ngIf="!last">, </ng-container>
         </ng-container>
-      </div>
-
-    <div class="col-sm text-center pt-5 pb-5" *ngIf="script.open">
-        <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'landing'}">
-          <button class="btn btn-dark overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
-        </a>
     </div>
-
-    <div class="accordion mt-2" id="{{'script'+script._id}}" *ngIf="!statementOnlyScript(script)">
+   
+    <div *ngIf="script.open" class="pt-5">
+        <div class="col-sm text-center" *ngIf="script.open">
+            <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'landing'}">
+            <button class="btn btn-secondary mt-3" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+            <!-- <button class="btn btn-secondary" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button> -->
+            </a>
+        </div>
+        <div *ngIf="script.open && !statementOnlyScript(script)" class="text-center pt-1">
+            Try the script for yourself!
+        </div>
+    </div>
+    <!-- <div *ngIf="!statementOnlyScript(script)" class="text-center mt-2 pt-5 pb-1">
+        View responses to the script
+    </div> -->
+    <div class="accordion mt-2 pt-5" id="{{'script'+script._id}}" *ngIf="!statementOnlyScript(script)">
         <div class="accordion-item museum-colour">
             <h2 class="accordion-header" id="{{'heading_' + 'script'+script._id}}">
                 <button 
@@ -72,7 +80,8 @@
                     [attr.data-bs-target]="'#collapse_' + 'script'+script._id"
                     aria-expanded="false" 
                     [attr.aria-controls]="'collapse_'+ 'script'+script._id">
-                    <strong>Responses</strong>
+                    <span><h4 style="line-height: 0.7em; font-size: x-large;">Responses</h4>
+                        View responses to the script</span>
                 </button>
             </h2>
             <div 

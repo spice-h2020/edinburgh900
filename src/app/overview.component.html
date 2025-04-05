@@ -39,12 +39,17 @@
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <div class="col-sm" *ngIf="script.open && script.visible">
+                      <div class="col-sm" *ngIf="script.open && script.visible && !statementOnlyScript(script)">
+                        <a routerLink='/landing/{{script._id}}' [queryParams]="{return:'home'}">
+                          <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">Find out more <i class='fa fa-link'></i></button>
+                        </a>
+                      </div>
+                      <div class="col-sm" *ngIf="script.open && script.visible && statementOnlyScript(script)">
                         <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
                           <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
                         </a>
                       </div>
-                      <div class="col-sm" *ngIf="script.visible && !statementOnlyScript(script)" >
+                      <div class="col-sm" *ngIf="script.visible && !statementOnlyScript(script) && !script.open" >
                         <a routerLink='/allResponses/{{script._id}}'>
                           <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
                         </a>
@@ -135,6 +140,23 @@
                         </div>
                       </div>
                       <div class="row mb-3">
+                        <div class="col-sm" *ngIf="script.open && script.visible && !statementOnlyScript(script)">
+                          <a routerLink='/landing/{{script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">Find out more <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="script.open && script.visible && statementOnlyScript(script)">
+                          <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="script.visible && !statementOnlyScript(script) && !script.open" >
+                          <a routerLink='/allResponses/{{script._id}}'>
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- <div class="row mb-3">
                         <div class="col-sm" *ngIf="script.open && script.visible">
                           <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
@@ -145,7 +167,7 @@
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
                           </a>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </ng-template>
                 </ngb-carousel>
@@ -228,6 +250,23 @@
                         </div>
                       </div>
                       <div class="row mb-3">
+                        <div class="col-sm" *ngIf="script.open && script.visible && !statementOnlyScript(script)">
+                          <a routerLink='/landing/{{script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">Find out more <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="script.open && script.visible && statementOnlyScript(script)">
+                          <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="script.visible && !statementOnlyScript(script) && !script.open" >
+                          <a routerLink='/allResponses/{{script._id}}'>
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- <div class="row mb-3">
                         <div class="col-sm" *ngIf="script.open && script.visible" >
                           <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
@@ -238,7 +277,7 @@
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
                           </a>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </ng-template>
                 </ngb-carousel>
@@ -315,6 +354,23 @@
                         </div>
                       </div>
                       <div class="row mb-3">
+                        <div class="col-sm" *ngIf="script.open && script.visible && !statementOnlyScript(script)">
+                          <a routerLink='/landing/{{script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">Find out more <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="script.open && script.visible && statementOnlyScript(script)">
+                          <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="script.visible && !statementOnlyScript(script) && !script.open" >
+                          <a routerLink='/allResponses/{{script._id}}'>
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- <div class="row mb-3">
                         <div class="col-sm" *ngIf="script.open && script.visible">
                           <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
@@ -325,7 +381,7 @@
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
                           </a>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </ng-template>
                 </ngb-carousel>
@@ -401,6 +457,23 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <div class="col-sm" *ngIf="script.open && script.visible && !statementOnlyScript(script)">
+                        <a routerLink='/landing/{{script._id}}' [queryParams]="{return:'home'}">
+                          <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">Find out more <i class='fa fa-link'></i></button>
+                        </a>
+                      </div>
+                      <div class="col-sm" *ngIf="script.open && script.visible && statementOnlyScript(script)">
+                        <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
+                          <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+                        </a>
+                      </div>
+                      <div class="col-sm" *ngIf="script.visible && !statementOnlyScript(script) && !script.open" >
+                        <a routerLink='/allResponses/{{script._id}}'>
+                          <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- <div class="row mb-3">
                       <div class="col-sm" *ngIf="script.open && script.visible">
                         <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'home'}">
                           <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
@@ -411,7 +484,7 @@
                           <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </ng-template>
               </ngb-carousel>
@@ -480,6 +553,23 @@
                         </div>
                       </div>
                       <div class="row">
+                        <div class="col-sm" *ngIf="model.selectedOverviewScript.script.open && model.selectedOverviewScript.script.visible && !statementOnlyScript(model.selectedOverviewScript.script)">
+                          <a routerLink='/landing/{{model.selectedOverviewScript.script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">Find out more <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="model.selectedOverviewScript.script.open && model.selectedOverviewScript.script.visible && statementOnlyScript(model.selectedOverviewScript.script)">
+                          <a routerLink='/slowLooking/{{model.selectedOverviewScript.script._id}}' [queryParams]="{return:'home'}">
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                        <div class="col-sm" *ngIf="model.selectedOverviewScript.script.visible && !statementOnlyScript(model.selectedOverviewScript.script) && !model.selectedOverviewScript.script.open" >
+                          <a routerLink='/allResponses/{{model.selectedOverviewScript.script._id}}'>
+                            <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- <div class="row">
                         <div class="col-sm" *ngIf="model.selectedOverviewScript.script.open && model.selectedOverviewScript.script.visible">
                           <a routerLink='/slowLooking/{{model.selectedOverviewScript.script._id}}' [queryParams]="{return:'home'}">
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
@@ -490,7 +580,7 @@
                             <button class="btn btn-dark mt-3 overviewshadow" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View responses <i class='fa fa-link'></i></button>
                           </a>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </ng-template>
                 </ngb-carousel>

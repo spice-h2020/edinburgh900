@@ -139,7 +139,7 @@ export class OverviewComponent implements OnInit {
             //only include scripts not removed, with a homepageartwork, at least one artwork and at laest one stage
             if(!script.removed && script.homepageartworkid != undefined && script.artworkids.length > 0 && script.stages.length > 0) {
 
-                if(script.visible && script.open) {
+                if(script.visible && (script.open || !this.statementOnlyScript(script))) {
                     // add featured scripts
                     if(script.featured) {
                         this.firstScripts.push(script);

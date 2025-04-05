@@ -56,7 +56,7 @@
 <div [ngSwitch]="managementMode">  
     <div *ngSwitchCase="1">
         <!-- show all -->
-        <div *ngFor="let item of getActivities(); let i = index" class="mb-3 card border p-3" style="border-radius: 15px;">
+        <div *ngFor="let item of getActivities() | slice:0:allResponseDisplayLimit; let i = index" class="mb-3 card border p-3" style="border-radius: 15px;">
             <div class="text-center">
                 <span *ngIf="item.approved" style="color: rgb(33, 136, 56)">
                     Approved
@@ -169,10 +169,13 @@
                 </span>
             </div>
         </div>
+        <div class="row pr-3 pl-3 pt-3" *ngIf="getActivities().length > allResponseDisplayLimit">
+            <button class="btn btn-dark" (click)="allResponseDisplayLimit = allResponseDisplayLimit+5">More responses</button>
+        </div>
     </div>
     <div *ngSwitchCase="2">
         <!-- show approved -->
-        <div *ngFor="let item of getApprovedActivities(); let i = index" class="mb-3 card border p-3" style="border-radius: 15px;">
+        <div *ngFor="let item of getApprovedActivities() | slice:0:approvedResponseDisplayLimit; let i = index" class="mb-3 card border p-3" style="border-radius: 15px;">
             <div class="text-center">
                 <span *ngIf="item.approved" style="color: rgb(33, 136, 56)">
                     Approved
@@ -257,10 +260,13 @@
                 </span>
             </div>
         </div>
+        <div class="row pr-3 pl-3 pt-3" *ngIf="getApprovedActivities().length > approvedResponseDisplayLimit">
+            <button class="btn btn-dark" (click)="approvedResponseDisplayLimit = approvedResponseDisplayLimit+5">More responses</button>
+        </div>
     </div>
     <div *ngSwitchCase="3">
         <!-- show waiting approval -->
-        <div *ngFor="let item of getUnpprovedActivities(); let i = index" class="mb-3 card border p-3" style="border-radius: 15px;">
+        <div *ngFor="let item of getUnpprovedActivities() | slice:0:unapprovedResponseDisplayLimit; let i = index" class="mb-3 card border p-3" style="border-radius: 15px;">
             <div class="text-center">
                 <span *ngIf="item.approved" style="color: rgb(33, 136, 56)">
                     Approved
@@ -345,6 +351,9 @@
                     <button class="col-sm-4 text-center float-right btn btn-danger" (click)="confirmDelete(item._id)">Delete</button>   
                 </span>
             </div>
+        </div>
+        <div class="row pr-3 pl-3 pt-3" *ngIf="getUnpprovedActivities().length > unapprovedResponseDisplayLimit">
+            <button class="btn btn-dark" (click)="unapprovedResponseDisplayLimit = unapprovedResponseDisplayLimit+5">More responses</button>
         </div>
     </div>
 </div>
