@@ -59,12 +59,12 @@
     <div *ngIf="script.open" class="pt-3">
         <div class="col-sm text-center" *ngIf="script.open">
             <a routerLink='/slowLooking/{{script._id}}' [queryParams]="{return:'landing'}">
-            <button class="btn btn-secondary mt-3" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button>
+            <button class="btn btn-secondary mt-3" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View activity <i class='fa fa-link'></i></button>
             <!-- <button class="btn btn-secondary" style="width: 10em; font-size: large; color: white; line-height: 1.2;">View script <i class='fa fa-link'></i></button> -->
             </a>
         </div>
-        <div *ngIf="script.open && !statementOnlyScript(script)" class="text-center pt-1">
-            Try the script for yourself!
+        <div *ngIf="script.open" class="text-center pt-1">
+            Try the activity for yourself!
         </div>
     </div>
     <!-- <div *ngIf="!statementOnlyScript(script)" class="text-center mt-2 pt-5 pb-1">
@@ -81,7 +81,7 @@
                     aria-expanded="false" 
                     [attr.aria-controls]="'collapse_'+ 'script'+script._id">
                     <span><h4 style="line-height: 0.7em; font-size: x-large;">Responses</h4>
-                        View responses to the script</span>
+                        View responses to the activity</span>
                 </button>
             </h2>
             <div 

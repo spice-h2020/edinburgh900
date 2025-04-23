@@ -96,7 +96,7 @@ export class OverviewComponent implements OnInit {
     }
 
     //user search
-    placeholderTextUsers = "Script author";
+    placeholderTextUsers = "Activity author";
     keywordUsers = 'searchstring';
     selectEventUsers(item) {
         // do something with selected item
@@ -113,7 +113,7 @@ export class OverviewComponent implements OnInit {
     }
 
     //script search
-    placeholderTextScripts = "Script title, description or author";
+    placeholderTextScripts = "Activity title, description or author";
     keywordScripts = 'searchstring';
     selectEventScripts(item) {
         // do something with selected item

@@ -71,7 +71,7 @@ export class ScriptWizardComponent {
 
     newStageMessage: boolean = false;
 
-    newStageMessageText: string = "New stage added to the end of your script";
+    newStageMessageText: string = "New stage added to the end of your activity";
 
     copyStageMessage: boolean = false;
 
@@ -81,7 +81,7 @@ export class ScriptWizardComponent {
 
     copyScriptMessage: boolean = false;
 
-    copyScriptMessageText: string = "Script copied"
+    copyScriptMessageText: string = "Activity copied"
 
     copiedScript: number = undefined;
 
@@ -203,7 +203,7 @@ export class ScriptWizardComponent {
 
     addScript() {
         let newscript = new Script();
-        newscript.name = "Untitled script";
+        newscript.name = "Untitled activity";
         newscript.open = true;
         newscript.visible = false;
         newscript.archived = false;
@@ -465,7 +465,7 @@ export class ScriptWizardComponent {
         this.model.addStageToScript(script, stage);
         //set vars
         this.model.viewScript = script._id;
-        this.newStageMessageText = "New statement stage added to the end of your script";
+        this.newStageMessageText = "New statement stage added to the end of your activity";
         this.newStageMessage = true;
         // this.editScriptStage = stage.id;
     }
@@ -475,7 +475,7 @@ export class ScriptWizardComponent {
         this.model.addStageToScript(script, stage);
         //set vars
         this.model.viewScript = script._id;
-        this.newStageMessageText = "New question stage added to the end of your script";
+        this.newStageMessageText = "New question stage added to the end of your activity";
         this.newStageMessage = true;
         // this.editScriptStage = stage.id;
     }
@@ -485,7 +485,7 @@ export class ScriptWizardComponent {
         this.model.addStageToScript(script, stage);
         //set vars
         this.model.viewScript = script._id;
-        this.newStageMessageText = "New story stage added to the end of your script";
+        this.newStageMessageText = "New story stage added to the end of your activity";
         this.newStageMessage = true;
         // this.editScriptStage = stage.id;
     }
@@ -495,7 +495,7 @@ export class ScriptWizardComponent {
         this.model.addStageToScript(script, stage);
         //set vars
         this.model.viewScript = script._id;
-        this.newStageMessageText = "New multiquestion stage added to the end of your script";
+        this.newStageMessageText = "New multiquestion stage added to the end of your activity";
         this.newStageMessage = true;
         //this.editScriptStage = stage.id;
     }

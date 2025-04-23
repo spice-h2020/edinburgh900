@@ -18,7 +18,7 @@
                     <a class="nav-link" routerLink="/otherPeople" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">All responses</a>
                 </li> -->
                 <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/wizard" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">My scripts</a>
+                  <a class="nav-link" routerLink="/wizard" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">My activities</a>
                 </li>
                 <li *ngIf="!isLoggedOut()" class="nav-item">
                   <a class="nav-link" routerLink="/artworks" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">{{configSettings.navbar_menu5}}</a>
@@ -41,9 +41,9 @@
                 <li *ngIf="isAdmin()" class="nav-item">
                   <a class="nav-link" routerLink="/users" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Users</a>
                 </li>
-                <li *ngIf="isAdmin()" class="nav-item">
+                <!-- <li *ngIf="isAdmin()" class="nav-item">
                   <a class="nav-link" routerLink="/exhibitions" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Exhibitions</a>
-                </li>
+                </li> -->
                 <li *ngIf="isLoggedOut()" class="nav-item">
                   <a class="nav-link" routerLink="/login" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Login</a>
                   </li>
