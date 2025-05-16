@@ -82,6 +82,17 @@ export class LandingPageComponent implements OnInit {
         }
     }
 
+    answersContainsAnswer(answers) {
+        if(answers) {
+            for(var answer of answers) {
+                if(answer.answer) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     getUsedArtworkIds(script: Script) {
         let usedArtworkIds: string[];
         if(script.homepageartworkid) {

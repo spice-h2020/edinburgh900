@@ -68,6 +68,17 @@ export class AllResponsesComponent implements OnInit {
 
     }
 
+    answersContainsAnswer(answers) {
+        if(answers) {
+            for(var answer of answers) {
+                if(answer.answer) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     startLightbox(url: string) {
         //find url position in gallery
         let ind = this.currentScriptImages.findIndex(x => x.data.src == url);
