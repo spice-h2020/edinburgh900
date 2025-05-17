@@ -136,8 +136,10 @@
                                                     </div>
                                                     <em *ngIf="action.questionStage.help && action.questionStage.help != ''"><p style="white-space: pre-wrap;" [innerHTML]="action.questionStage.help | linkify"></p></em>
                                                 </ng-container>
-                                                <span style="font-weight: bold; white-space: pre-wrap;" [innerHTML]="action.questions[answer.question] | linkify"></span>
-                                                <p class="font-weight-normal" style="white-space: pre-wrap;">{{answer.answer}}</p>
+                                                <ng-container *ngIf="answer.answer">
+                                                    <span style="font-weight: bold; white-space: pre-wrap;" [innerHTML]="action.questions[answer.question] | linkify"></span>
+                                                    <p class="font-weight-normal" style="white-space: pre-wrap;">{{answer.answer}}</p>
+                                                </ng-container>
                                             </span>
                                         </span>
                                     </span>
