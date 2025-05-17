@@ -32,6 +32,17 @@ export class ContributionManagementComponent {
 
     managementMode: number = 1;
 
+    answersContainsAnswer(answers) {
+        if(answers) {
+            for(var answer of answers) {
+                if(answer.answer) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     saveActivity(activity: Activity) {
         this.model.saveActivity(activity);
     }

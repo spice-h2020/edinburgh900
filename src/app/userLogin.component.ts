@@ -38,6 +38,17 @@ export class UserLoginComponent {
 
     responseDisplayLimit = 5;
 
+    answersContainsAnswer(answers) {
+        if(answers) {
+            for(var answer of answers) {
+                if(answer.answer) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     getUsers(): User[] {
         return this.model.getUsers();
     }
