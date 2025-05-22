@@ -1,56 +1,73 @@
 <nav class="navbar  navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/home">{{configSettings.navbar_text}}</a>
-        <a *ngFor="let language of configSettings.translations" class="navbar-nav" [routerLink]="language.route">{{language.code}}</a>
+  <div class="container-fluid">
+      <a *ngIf="!themeNav" class="navbar-brand" routerLink="/home">{{configSettings.navbar_text}}</a>
+      <a *ngIf="themeNav" class="navbar-brand" [routerLink]="['/','themeLanding',themeNav]" [queryParams]="{themenav:themeNav}">{{configSettings.navbar_text}}</a>
+      <a *ngFor="let language of configSettings.translations" class="navbar-nav" [routerLink]="language.route">{{language.code}}</a>
 
+      <ng-container *ngIf="themeNav">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/home" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" routerLink="/gallery" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">All scripts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/otherPeople" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">All responses</a>
-                </li> -->
-                <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/wizard" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">My activities</a>
-                </li>
-                <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/artworks" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">{{configSettings.navbar_menu5}}</a>
-                </li>
-                <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/themes" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Themes</a>
-                </li>
-                <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/management" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Management</a>
-                </li>
-                <!-- <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/selector" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Scriptsets</a>
-                </li> -->
-                <!-- <li *ngIf="isAdmin()" class="nav-item">
-                  <a class="nav-link" routerLink="/authoring" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Advanced</a>
-                </li> -->
-                <li *ngIf="isAdmin()" class="nav-item">
-                  <a class="nav-link" routerLink="/collection" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Collection</a>
-                </li>
-                <li *ngIf="isAdmin()" class="nav-item">
-                  <a class="nav-link" routerLink="/users" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Users</a>
-                </li>
-                <!-- <li *ngIf="isAdmin()" class="nav-item">
-                  <a class="nav-link" routerLink="/exhibitions" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Exhibitions</a>
-                </li> -->
-                <li *ngIf="isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/login" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Login</a>
-                  </li>
-                <li *ngIf="!isLoggedOut()" class="nav-item">
-                  <a class="nav-link" routerLink="/login" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">{{getCurrentUsername()}}</a>
-                </li>
-            </ul>
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/','themeLanding',themeNav]" [queryParams]="{themenav:themeNav}" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a>
+              </li>
+          </ul>
         </div>
+      </ng-container>
+      
+      <ng-container *ngIf="!themeNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/home" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" routerLink="/gallery" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">All scripts</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/otherPeople" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">All responses</a>
+              </li> -->
+              <li *ngIf="!isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/wizard" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">My activities</a>
+              </li>
+              <li *ngIf="!isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/artworks" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">{{configSettings.navbar_menu5}}</a>
+              </li>
+              <li *ngIf="!isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/themes" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Themes</a>
+              </li>
+              <li *ngIf="!isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/management" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Management</a>
+              </li>
+              <!-- <li *ngIf="!isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/selector" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Scriptsets</a>
+              </li> -->
+              <!-- <li *ngIf="isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/authoring" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Advanced</a>
+              </li> -->
+              <li *ngIf="isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/collection" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Collection</a>
+              </li>
+              <li *ngIf="isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/users" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Users</a>
+              </li>
+              <!-- <li *ngIf="isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/exhibitions" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Exhibitions</a>
+              </li> -->
+              <li *ngIf="isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/login" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Login</a>
+                </li>
+              <li *ngIf="!isLoggedOut()" class="nav-item">
+                <a class="nav-link" routerLink="/login" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">{{getCurrentUsername()}}</a>
+              </li>
+          </ul>
+        </div>
+      </ng-container>
+   
     </div>
   </nav>

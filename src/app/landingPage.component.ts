@@ -28,6 +28,8 @@ export class LandingPageComponent implements OnInit {
         public lightbox: Lightbox
         ){}
 
+    themeNav: string = null;
+
     // configuration settings
     configSettings = new ConfigSettings;
 
@@ -66,6 +68,21 @@ export class LandingPageComponent implements OnInit {
             }
         }
 
+        this.activatedRoute.queryParams
+        .subscribe(params => {
+            if(params.themenav == "false") {
+                this.themeNav = null;
+            }
+            else {
+                if(params.themenav) {
+                    this.themeNav = params.themenav;
+                }
+                else {
+                    this.themeNav = null;
+                }
+            }
+        }
+        );
     }
 
     startLightbox(url: string) {

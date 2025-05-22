@@ -75,6 +75,8 @@ export class SlowLookingActivityComponent implements OnInit {
         public lightbox: Lightbox
     ) { } 
 
+    themeNav: string = null;
+    
     ngOnInit() {
 
         let _id = this.activatedRoute.snapshot.params.id;
@@ -96,6 +98,22 @@ export class SlowLookingActivityComponent implements OnInit {
                 }
                 if(params.return == "end") {
                     this.routerLink = "/end";
+                }
+            }
+        );
+
+        this.activatedRoute.queryParams
+            .subscribe(params => {
+                if(params.themenav == "false") {
+                    this.themeNav = null;
+                }
+                else {
+                    if(params.themenav) {
+                        this.themeNav = params.themenav;
+                    }
+                    else {
+                        this.themeNav = null;
+                    }
                 }
             }
         );

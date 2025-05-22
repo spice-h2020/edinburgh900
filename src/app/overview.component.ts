@@ -23,6 +23,9 @@ export class OverviewComponent implements OnInit {
 
     constructor(public model: Model, private activatedRoute: ActivatedRoute){}
 
+    foo() {
+        console.log(this.model.selectedTheme);
+    }
     // configuration settings
     configSettings = new ConfigSettings;
 

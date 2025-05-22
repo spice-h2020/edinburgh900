@@ -82,8 +82,8 @@
         </div>
         <div class="col-md-1" style="min-width: 18em;" *ngIf="!isAdmin()">
             <button class="btn btn-secondary float-right" (click)="selectScript(script._id); showup(); copyScriptMessage=false;">Open activity</button>
-            <!-- <button class="btn btn-success float-right mt-3" style="clear: both;" (click)="copyScript(script);">Copy script</button> -->
-            <button class="btn btn-danger float-right mr-3" (click)="confirmRemove(script._id); copyScriptMessage=false;">Remove activity</button>
+            <button class="btn btn-success float-right mt-3" style="clear: both;" (click)="copyScript(script);">Copy activity</button>
+            <button class="btn btn-danger float-right mr-3 mt-3" (click)="confirmRemove(script._id); copyScriptMessage=false;">Remove activity</button>
         </div>
     </div>
     <span *ngIf="copiedScript==script.id && copyScriptMessage">

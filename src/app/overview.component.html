@@ -201,7 +201,16 @@
               </div>
               <div class="col">
                 <h3 class="row text-left">{{model.selectedTheme.name}}</h3>
-                <div class="row text-left">{{model.selectedTheme.description}}</div>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row text-left">{{model.selectedTheme.description}}</div>
+                  </div>
+                  <div class="col-sm-4" style="margin:0; padding:0">
+                    <a [routerLink]="['/','themeLanding',model.selectedTheme.themeid]" [queryParams]="{return:'home'}">
+                      <button class="btn btn-dark overviewshadow float-right ml-0" style="width: 9em; font-size: large; color: white; line-height: 1.2;">Theme page <i class='fa fa-link'></i></button>
+                    </a>
+                  </div>
+                </div>
               </div>
               <hr>
               <ngb-carousel [showNavigationArrows]="model.selectedTheme.scripts.length > 1" [showNavigationIndicators]="model.selectedTheme.scripts.length > 1">

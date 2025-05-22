@@ -4,6 +4,7 @@ import { Model } from "./repository.model";
 import { CurrentUser } from "./currentUser.service";
 import { User } from "./user.model";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
+import { ConfigSettings } from "./config";
 
 @Component({
     selector: "paThemeTable",
@@ -28,12 +29,36 @@ export class ThemeTableComponent {
         }
     }
 
+    includeNavigation: boolean = false;
+
     isAdmin() {
         return this.currentuser.getUserID() == 1;
     }
 
     isLoggedIn() {
         return this.currentuser.getUserID() != undefined;
+    }
+
+    configSettings = new ConfigSettings;
+
+    //URL for accessing the script directly
+    landingURL(theme: Theme): string {
+        if(this.includeNavigation) {
+            return this.configSettings.baseURL + "themeLanding/" + theme._id + "?themenav=false";
+        }
+        else {
+            return this.configSettings.baseURL + "themeLanding/" + theme._id + "?themenav=" + theme._id;
+        }
+        // return window.location.origin.concat("/slowLooking/", script._id);
+    }
+
+    landingButtonText() {
+        if(this.includeNavigation) {
+            return "Copy landing page URL with full menu"
+        }
+        else {
+            return "Copy landing page URL with limited menu";
+        }
     }
 
     writeAccess(theme: Theme): boolean {

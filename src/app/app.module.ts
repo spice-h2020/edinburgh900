@@ -44,6 +44,7 @@ import { SortableHeaderDirective } from './sortable-header.directive';
 import { FilterSelectedArtworksPipe } from './filterselectedartworks.pipe';
 import { CollectionArtworkTableComponent } from './collectionArtworkTable.component';
 import { LandingPageComponent } from './landingPage.component';
+import { ThemeLandingPageComponent } from './themeLandingPage.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { LandingPageComponent } from './landingPage.component';
     SortableHeaderDirective,
     FilterSelectedArtworksPipe,
     CollectionArtworkTableComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    ThemeLandingPageComponent
     ],
   imports: [
     BrowserModule,
