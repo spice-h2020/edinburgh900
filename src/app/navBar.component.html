@@ -1,7 +1,8 @@
 <nav class="navbar  navbar-dark bg-dark">
   <div class="container-fluid">
-      <a *ngIf="!themeNav" class="navbar-brand" routerLink="/home">{{configSettings.navbar_text}}</a>
+      <a *ngIf="!(themeNav || activityNav)" class="navbar-brand" routerLink="/home">{{configSettings.navbar_text}}</a>
       <a *ngIf="themeNav" class="navbar-brand" [routerLink]="['/','themeLanding',themeNav]" [queryParams]="{themenav:themeNav}">{{configSettings.navbar_text}}</a>
+      <a *ngIf="activityNav" class="navbar-brand" [routerLink]="['/','landing',activityNav]" [queryParams]="{activitynav:activityNav}">{{configSettings.navbar_text}}</a>
       <a *ngFor="let language of configSettings.translations" class="navbar-nav" [routerLink]="language.route">{{language.code}}</a>
 
       <ng-container *ngIf="themeNav">
@@ -16,8 +17,21 @@
           </ul>
         </div>
       </ng-container>
+
+      <ng-container *ngIf="activityNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/','landing',activityNav]" [queryParams]="{activitynav:activityNav}" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a>
+              </li>
+          </ul>
+        </div>
+      </ng-container>
       
-      <ng-container *ngIf="!themeNav">
+      <ng-container *ngIf="!(themeNav || activityNav)">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

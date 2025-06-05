@@ -74,7 +74,7 @@
                 </div>
                 <div class="text-right">
                     <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="statementBack(i);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
-                    <button class="btn btn-secondary" (click)="statementEnd();" [routerLink]="routerLink" [queryParams]="{themenav:themeNav}">Close <i class="fa fa-close" aria-hidden="true"></i></button>
+                    <button class="btn btn-secondary" (click)="statementEnd();" [routerLink]="routerLink" [queryParams]="getQueryParams()">Close <i class="fa fa-close" aria-hidden="true"></i></button>
                 </div>
                 <div class="text-right mb-3">
                     <span *ngIf="!statementOnlyScript(currentScript)" class="fs-6" style="color: rgb(89, 98, 105);">Press <strong>Close</strong> to save your response</span>
@@ -226,7 +226,7 @@
                             </div>
                             <div class="text-right">
                                 <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="multiquestionBack(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
-                                <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionEnd(i, multiquestionIndex, answervalue.value, stage, stage.questions, newMultiquestionAction)" [routerLink]="routerLink" [queryParams]="{themenav:themeNav}">Close <i class="fa fa-close" aria-hidden="true"></i></button>
+                                <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionEnd(i, multiquestionIndex, answervalue.value, stage, stage.questions, newMultiquestionAction)" [routerLink]="routerLink" [queryParams]="getQueryParams()">Close <i class="fa fa-close" aria-hidden="true"></i></button>
                             </div>
                             <div class="text-right mb-3">
                                 <span *ngIf="!statementOnlyScript(currentScript)" class="fs-6" style="color: rgb(89, 98, 105);">Press <strong>Close</strong> to save your response</span>
@@ -291,7 +291,7 @@
                         </div>
                         <div class="text-right">
                             <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="multiquestionBack(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
-                            <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionEnd(i, multiquestionIndex, answervalue.value, stage, stage.questions, newMultiquestionAction)" [routerLink]="routerLink" [queryParams]="{themenav:themeNav}">Close <i class="fa fa-close" aria-hidden="true"></i></button>
+                            <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionEnd(i, multiquestionIndex, answervalue.value, stage, stage.questions, newMultiquestionAction)" [routerLink]="routerLink" [queryParams]="getQueryParams()">Close <i class="fa fa-close" aria-hidden="true"></i></button>
                         </div>
                         <div class="text-right mb-3">
                             <span *ngIf="!statementOnlyScript(currentScript)" class="fs-6" style="color: rgb(89, 98, 105);">Press <strong>Close</strong> to save your response</span>
@@ -434,7 +434,7 @@
                     </div>
                     <div class="text-right">
                         <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="questionBack(i, stage, stage.question.title, newQuestionAction);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
-                        <button class="btn btn-secondary" [disabled]="stage.required && !this.newQuestionAction.answer" (click)="questionEnd(i, stage, stage.question.title, newQuestionAction);" [routerLink]="routerLink" [queryParams]="{themenav:themeNav}">Close <i class="fa fa-close" aria-hidden="true"></i></button>
+                        <button class="btn btn-secondary" [disabled]="stage.required && !this.newQuestionAction.answer" (click)="questionEnd(i, stage, stage.question.title, newQuestionAction);" [routerLink]="routerLink" [queryParams]="getQueryParams()">Close <i class="fa fa-close" aria-hidden="true"></i></button>
                     </div>
                     <div class="text-right mb-3">
                         <span *ngIf="!statementOnlyScript(currentScript)" class="fs-6" style="color: rgb(89, 98, 105);">Press <strong>Close</strong> to save your response</span>
@@ -537,7 +537,7 @@
                     </div>
                     <div class="text-right">
                         <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="storyBack(i, stage, stage.body, newStoryAction);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
-                        <button class="btn btn-secondary" [disabled]="stage.required && !newStoryAction.answer" (click)="storyEnd(i, stage, stage.body, newStoryAction);" [routerLink]="routerLink" [queryParams]="{themenav:themeNav}">Close <i class="fa fa-close" aria-hidden="true"></i></button>
+                        <button class="btn btn-secondary" [disabled]="stage.required && !newStoryAction.answer" (click)="storyEnd(i, stage, stage.body, newStoryAction);" [routerLink]="routerLink" [queryParams]="getQueryParams()">Close <i class="fa fa-close" aria-hidden="true"></i></button>
                     </div>
                     <div class="text-right mb-3">
                         <span *ngIf="!statementOnlyScript(currentScript)" class="fs-6" style="color: rgb(89, 98, 105);">Press <strong>Close</strong> to save your response</span>

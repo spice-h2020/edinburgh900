@@ -31,17 +31,31 @@ export class NavBarComponent implements OnInit {
                         this.themeNav = null;
                     }
                 }
+                if(params.activitynav == "false") {
+                    this.activityNav = null;
+                }
+                else {
+                    if(params.activitynav) {
+                        this.activityNav = params.activitynav;
+                    }
+                    else {
+                        this.activityNav = null;
+                    }
+                }
             }
         );
      }
     
     foo() {
         console.log(this.themeNav);
+        console.log(this.activityNav);
     }
     // configuration settings
     configSettings = new ConfigSettings;
 
     themeNav: string = null;
+
+    activityNav: string = null;
 
     isAdmin() {
         return this.currentuser.getUserID() == 1;

@@ -30,6 +30,18 @@ export class LandingPageComponent implements OnInit {
 
     themeNav: string = null;
 
+    activityNav: string = null;
+
+    getQueryParams(): {} {
+        if(this.themeNav) {
+            return {return:'landing', themenav: this.themeNav};
+        }
+        if(this.activityNav) {
+            return {return:'landing', activitynav: this.activityNav};
+        }
+        return {return:'landing'};
+    }
+
     // configuration settings
     configSettings = new ConfigSettings;
 
@@ -79,6 +91,17 @@ export class LandingPageComponent implements OnInit {
                 }
                 else {
                     this.themeNav = null;
+                }
+            }
+            if(params.activitynav == "false") {
+                this.activityNav = null;
+            }
+            else {
+                if(params.activitynav) {
+                    this.activityNav = params.activitynav;
+                }
+                else {
+                    this.activityNav = null;
                 }
             }
         }

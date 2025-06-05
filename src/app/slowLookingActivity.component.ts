@@ -76,6 +76,18 @@ export class SlowLookingActivityComponent implements OnInit {
     ) { } 
 
     themeNav: string = null;
+
+    activityNav: string = null;
+
+    getQueryParams() {
+        if(this.themeNav) {
+            return {themenav: this.themeNav};
+        }
+        if(this.activityNav) {
+            return {activitynav: this.activityNav};
+        }
+        return {};
+    }
     
     ngOnInit() {
 
@@ -113,6 +125,17 @@ export class SlowLookingActivityComponent implements OnInit {
                     }
                     else {
                         this.themeNav = null;
+                    }
+                }
+                if(params.activitynav == "false") {
+                    this.activityNav = null;
+                }
+                else {
+                    if(params.activitynav) {
+                        this.activityNav = params.activitynav;
+                    }
+                    else {
+                        this.activityNav = null;
                     }
                 }
             }

@@ -31,6 +31,8 @@ export class ScriptWizardComponent {
 
     showCurrentSelection: boolean = false;
 
+    includeNavigation: boolean = false;
+
     setFacetsOnScriptOpening() {
         this.artistStartList = this.uniqByMap(this.getArtworks(this.model.selectedScript).map(x => x.artist)).map(x => ({text: x}));
         this.artworkStartList = this.uniqByMap(this.getArtworks(this.model.selectedScript).map(x => x.name)).map(x => ({text: x}));
@@ -93,6 +95,26 @@ export class ScriptWizardComponent {
 
     //URL for accessing the script directly
     landingURL(script: Script): string {
+        if(this.includeNavigation) {
+            return this.configSettings.baseURL + "landing/" + script._id;
+        }
+        else {
+            return this.configSettings.baseURL + "landing/" + script._id + "?activitynav=" + script._id;
+        }
+        // return window.location.origin.concat("/slowLooking/", script._id);
+    }
+
+    landingButtonText() {
+        if(this.includeNavigation) {
+            return "Copy landing page URL with full menu"
+        }
+        else {
+            return "Copy landing page URL with limited menu";
+        }
+    }
+
+    //URL for accessing the script directly
+    landingURL2(script: Script): string {
         return this.configSettings.baseURL + "landing/" + script._id;
         // return window.location.origin.concat("/slowLooking/", script._id);
     }

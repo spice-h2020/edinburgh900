@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div *ngIf="!tableEditing" class="mb-2">
-                        <button class="btn btn-light" ngbPopover="{{landingURL(item)}}" popoverTitle="Activity URL copied to clipboard" ngxClipboard [cbContent]='landingURL(item)'>{{landingButtonText()}} <i class="fa fa-clone" aria-hidden="true"></i></button>
+                        <button class="btn btn-light" ngbPopover="{{landingURL(item)}}" popoverTitle="URL copied to clipboard" ngxClipboard [cbContent]='landingURL(item)'>{{landingButtonText()}} <i class="fa fa-clone" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <div class="col-sm-4">

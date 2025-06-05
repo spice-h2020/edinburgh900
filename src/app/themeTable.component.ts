@@ -44,7 +44,7 @@ export class ThemeTableComponent {
     //URL for accessing the script directly
     landingURL(theme: Theme): string {
         if(this.includeNavigation) {
-            return this.configSettings.baseURL + "themeLanding/" + theme._id + "?themenav=false";
+            return this.configSettings.baseURL + "themeLanding/" + theme._id;
         }
         else {
             return this.configSettings.baseURL + "themeLanding/" + theme._id + "?themenav=" + theme._id;
