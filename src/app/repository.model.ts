@@ -77,6 +77,9 @@ export class Model {
 
     }
 
+    // Activity model
+    newActivity:Activity = new Activity();
+
     // Collection
     getCollection() {
         return this.dbCollectionArtworks;
@@ -567,7 +570,10 @@ export class Model {
             activity.id = this.generateActivityID();
         }
         if (activity._id == undefined) {
-            this.dbDataSource.saveActivity(activity).subscribe(p => this.dbActivities.push(p));
+            this.dbDataSource.saveActivity(activity).subscribe(p => {
+                this.dbActivities.push(p);
+                this.newActivity._id = p._id;
+            });
         } 
         else {
             this.dbDataSource.updateActivity(activity).subscribe(() => {

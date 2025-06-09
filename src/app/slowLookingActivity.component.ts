@@ -65,7 +65,7 @@ export class SlowLookingActivityComponent implements OnInit {
     slowLookingCurrentScriptStageIndex = 0;
 
     // new activity initialised on init
-    newActivity: Activity = new Activity();
+    // newActivity: Activity = new Activity();
 
     constructor(
         public currentuser: CurrentUser, 
@@ -195,9 +195,9 @@ export class SlowLookingActivityComponent implements OnInit {
             this.slowLookingMaximumScriptStageIndex = this.currentScript.stages.length-1;
 
             // initialize activity of the script
-            this.newActivity = new Activity();
-            this.newActivity.script = this.currentScript;
-            this.newActivity.approved = this.currentScript.autoapproved;
+            this.model.newActivity = new Activity();
+            this.model.newActivity.script = this.currentScript;
+            this.model.newActivity.approved = this.currentScript.autoapproved;
 
             //set lightbox images
             if(this.currentScript.artworkids.length > 0) {
@@ -360,8 +360,8 @@ export class SlowLookingActivityComponent implements OnInit {
     }
 
     activityContainsResponse() {
-        if(this.newActivity.actions) {
-            for(var action of this.newActivity.actions) {
+        if(this.model.newActivity.actions) {
+            for(var action of this.model.newActivity.actions) {
                 if(action instanceof questionAction) {
                     if(action.answer) {
                         return true;
@@ -385,7 +385,7 @@ export class SlowLookingActivityComponent implements OnInit {
     }
 
     addActivity() {
-        this.newActivity.editor = this.currentScript.owner;
+        this.model.newActivity.editor = this.currentScript.owner;
 
         //discard if activity is empty
         if(this.activityContainsResponse()) {
@@ -393,19 +393,19 @@ export class SlowLookingActivityComponent implements OnInit {
             let user = this.currentuser.getUser();
             let userID = user.id;
             if(userID == 0 || user.id == null) {
-                this.newActivity.author = "";
-                this.newActivity.authorname = "anonymous";
+                this.model.newActivity.author = "";
+                this.model.newActivity.authorname = "anonymous";
             }
             else {
-                this.newActivity.author = user._id;
+                this.model.newActivity.author = user._id;
                 if(user.displayname) {
-                    this.newActivity.authorname = user.displayname;
+                    this.model.newActivity.authorname = user.displayname;
                 }
                 else {
-                    this.newActivity.authorname = user.username;
+                    this.model.newActivity.authorname = user.username;
                 }
             }
-            this.model.saveActivity(this.newActivity);
+            this.model.saveActivity(this.model.newActivity);
         }
         else {
             console.log("empty response discarded");
@@ -413,22 +413,22 @@ export class SlowLookingActivityComponent implements OnInit {
     }
 
     addActionToActivity(action: Action) {
-        if(this.newActivity.actions) {
-            this.newActivity.actions.push(action);
+        if(this.model.newActivity.actions) {
+            this.model.newActivity.actions.push(action);
         }
         else{
-            this.newActivity.actions = new Array(action);
+            this.model.newActivity.actions = new Array(action);
         }
     }
     
     addOrReplaceActionToActivity(i: number, action: Action) {
-        if(this.newActivity.actions == undefined) {
+        if(this.model.newActivity.actions == undefined) {
             this.addActionToActivity(action);
         }
         else {
-            const ind = this.newActivity.actions.findIndex(x => x.position == i);
+            const ind = this.model.newActivity.actions.findIndex(x => x.position == i);
             if(ind > -1) {
-                this.newActivity.actions[ind] = action;
+                this.model.newActivity.actions[ind] = action;
             }
             else {
                 this.addActionToActivity(action);
@@ -437,12 +437,12 @@ export class SlowLookingActivityComponent implements OnInit {
     }
 
     getActionOfActivity(i: number) {
-        if(this.newActivity.actions == undefined) {
+        if(this.model.newActivity.actions == undefined) {
             return undefined;
         }
-        const ind = this.newActivity.actions.findIndex(x => x.position == i);
+        const ind = this.model.newActivity.actions.findIndex(x => x.position == i);
         if(ind > -1) {
-            let action = this.newActivity.actions[ind];
+            let action = this.model.newActivity.actions[ind];
             if(action instanceof questionAction) {
                 // Question action
                 this.newQuestionAction = action;
@@ -581,6 +581,7 @@ export class SlowLookingActivityComponent implements OnInit {
         // this.multiquestionIndex=0;
         this.resetmultiquestionindex();
 
+        this.addActivity();
         this.showup();
     }
 
@@ -625,6 +626,7 @@ export class SlowLookingActivityComponent implements OnInit {
         // this.multiquestionIndex=0;
         this.resetmultiquestionindex();
 
+        this.addActivity();
         this.showup();
     }
 
@@ -654,6 +656,7 @@ export class SlowLookingActivityComponent implements OnInit {
 
         this.resetmultiquestionindex();
 
+        this.addActivity();
         this.showup();
     }
 
@@ -686,6 +689,7 @@ export class SlowLookingActivityComponent implements OnInit {
 
         this.resetmultiquestionindex();
 
+        this.addActivity();
         this.showup();
     }
 
@@ -706,6 +710,7 @@ export class SlowLookingActivityComponent implements OnInit {
 
         this.resetmultiquestionindex();
 
+        this.addActivity(); 
         this.showup();
     }
 
@@ -737,6 +742,7 @@ export class SlowLookingActivityComponent implements OnInit {
 
         this.resetmultiquestionindex();
 
+        this.addActivity();
         this.showup();
     }
 
