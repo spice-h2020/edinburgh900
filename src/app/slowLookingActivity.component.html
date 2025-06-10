@@ -69,10 +69,10 @@
             <p class="text-break" style="white-space: pre-wrap;" [innerHTML]="stage.body | linkifyHtml"></p>
 
             <div *ngIf="slowLookingMaximumScriptStageIndex == i" class="row bg-light border-top">
-                <div class="text-left col-6">
-                    <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                <div class="text-left col-sm-6">
+                    <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                 </div>
-                <div class="text-right col-6 mb-3 mt-3">
+                <div class="text-right col-sm-6 mb-3 mt-sm-3">
                     <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="statementBack(i);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                     <button class="btn btn-secondary" (click)="statementEnd();" [routerLink]="routerLink" [queryParams]="getQueryParams()">Finish <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                 </div>
@@ -81,10 +81,10 @@
                 </div> -->
             </div>
             <div *ngIf="slowLookingMaximumScriptStageIndex != i" class="row bg-light border-top">
-                <div class="text-left col-6">
-                    <figcaption class="mt-3 blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                <div class="text-left col-sm-6">
+                    <figcaption class="mt-2 blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                 </div>
-                <div class="text-right col-6 mb-3 mt-3">
+                <div class="text-right col-sm-6 mb-3 mt-sm-3">
                     <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="statementBack(i);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                     <button *ngIf="slowLookingMaximumScriptStageIndex != i" class="btn btn-secondary" (click)="statementContinue(i);">Continue <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                 </div>
@@ -221,10 +221,10 @@
                         </div>
                         <!-- return to list if last stage -->
                         <div *ngIf="slowLookingMaximumScriptStageIndex == i" class="row bg-light border-top">
-                            <div class="text-left col-6">
-                                <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                            <div class="text-left col-sm-6">
+                                <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                             </div>
-                            <div class="text-right col-6 mb-3 mt-3">
+                            <div class="text-right col-sm-6 mb-3 mt-sm-3">
                                 <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="multiquestionBack(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                                 <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionEnd(i, multiquestionIndex, answervalue.value, stage, stage.questions, newMultiquestionAction)" [routerLink]="routerLink" [queryParams]="getQueryParams()">Finish <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                             </div>
@@ -234,10 +234,10 @@
                         </div>
                         <!-- continue if not last stage -->
                         <div *ngIf="slowLookingMaximumScriptStageIndex != i" class="row bg-light border-top">
-                            <div class="text-left col-6">
-                                <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                            <div class="text-left col-sm-6">
+                                <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                             </div>
-                            <div class="text-right col-6 mb-3 mt-3">
+                            <div class="text-right col-sm-6 mb-3 mt-sm-3">
                                 <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="multiquestionBack(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                                 <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionContinue(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)">Continue <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                             </div>
@@ -286,10 +286,10 @@
                     <!-- <button class="m-3 btn btn-warning" (click)="updateAnswers(multiquestionIndex, answer.value); submittedAnswer=true;">Close</button> -->
                     <!-- return to list if last stage -->
                     <div *ngIf="slowLookingMaximumScriptStageIndex == i" class="row bg-light border-top">
-                        <div class="text-left col-6">
-                            <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                        <div class="text-left col-sm-6">
+                            <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                         </div>
-                        <div class="text-right col-6 mb-3 mt-3">
+                        <div class="text-right col-sm-6 mb-3 mt-sm-3">
                             <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="multiquestionBack(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                             <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionEnd(i, multiquestionIndex, answervalue.value, stage, stage.questions, newMultiquestionAction)" [routerLink]="routerLink" [queryParams]="getQueryParams()">Finish <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                         </div>
@@ -299,10 +299,10 @@
                     </div>
                     <!-- continue if not last stage -->
                     <div *ngIf="slowLookingMaximumScriptStageIndex != i" class="row bg-light border-top">
-                        <div class="text-left col-6">
-                            <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                        <div class="text-left col-sm-6">
+                            <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                         </div>
-                        <div class="text-right col-6 mb-3 mt-3">
+                        <div class="text-right col-sm-6 mb-3 mt-sm-3">
                             <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="multiquestionBack(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                             <button class="btn btn-secondary" [disabled]="stage.required && !(answervalue.value && (filterEmptyMultiquestionAnswers().length >= stage.questions.length || (!isFilledMultiquestionanswer(multiquestionIndex) && filterEmptyMultiquestionAnswers().length == stage.questions.length-1)))" (click)="multiquestionContinue(multiquestionIndex, answervalue.value, stage, stage.questions, i, newMultiquestionAction)">Continue <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                         </div>
@@ -429,10 +429,10 @@
                 </ng-container>
                 <!-- return to list if last stage -->
                 <div *ngIf="slowLookingMaximumScriptStageIndex == i" class="row bg-light border-top">
-                    <div class="text-left col-6">
-                        <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                    <div class="text-left col-sm-6">
+                        <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                     </div>
-                    <div class="text-right col-6 mb-3 mt-3">
+                    <div class="text-right col-sm-6 mb-3 mt-sm-3">
                         <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="questionBack(i, stage, stage.question.title, newQuestionAction);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                         <button class="btn btn-secondary" [disabled]="stage.required && !this.newQuestionAction.answer" (click)="questionEnd(i, stage, stage.question.title, newQuestionAction);" [routerLink]="routerLink" [queryParams]="getQueryParams()">Finish <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                     </div>
@@ -442,10 +442,10 @@
                 </div>
                 <!-- continue if not last stage -->
                 <div *ngIf="slowLookingMaximumScriptStageIndex != i" class="row bg-light border-top">
-                    <div class="text-left col-6">
-                        <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}&nbsp;</figcaption>
+                    <div class="text-left col-sm-6">
+                        <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}&nbsp;</figcaption>
                     </div>
-                    <div class="text-right col-6 mb-3 mt-3">
+                    <div class="text-right col-sm-6 mb-3 mt-sm-3">
                         <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="questionBack(i, stage, stage.question.title, newQuestionAction);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                         <button class="btn btn-secondary" [disabled]="stage.required && !this.newQuestionAction.answer" (click)="questionContinue(i, stage, stage.question.title, newQuestionAction);">Continue <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                     </div>
@@ -532,10 +532,10 @@
                 
                 <!-- return to list if last stage -->
                 <div *ngIf="slowLookingMaximumScriptStageIndex == i" class="row bg-light border-top">
-                    <div class="text-left col-6">
-                        <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                    <div class="text-left col-sm-6">
+                        <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                     </div>
-                    <div class="text-right col-6 mb-3 mt-3">
+                    <div class="text-right col-sm-6 mb-3 mt-sm-3">
                         <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="storyBack(i, stage, stage.body, newStoryAction);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                         <button class="btn btn-secondary" [disabled]="stage.required && !newStoryAction.answer" (click)="storyEnd(i, stage, stage.body, newStoryAction);" [routerLink]="routerLink" [queryParams]="getQueryParams()">Finish <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                     </div>
@@ -546,10 +546,10 @@
 
                 <!-- continue if not last stage -->
                 <div *ngIf="slowLookingMaximumScriptStageIndex != i" class="row bg-light border-top">
-                    <div class="text-left col-6">
-                        <figcaption class="mt-3 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
+                    <div class="text-left col-sm-6">
+                        <figcaption class="mt-2 text-left blockquote-footer mb-0">{{currentScript.author}}</figcaption>
                     </div>
-                    <div class="text-right col-6 mb-3 mt-3">
+                    <div class="text-right col-sm-6 mb-3 mt-sm-3">
                         <button class="mr-2 btn btn-secondary" *ngIf="i != 0" (click)="storyBack(i, stage, stage.body, newStoryAction);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
                         <button class="btn btn-secondary" [disabled]="stage.required && !newStoryAction.answer" (click)="storyContinue(i, stage, stage.body, newStoryAction);">Continue <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                     </div>
